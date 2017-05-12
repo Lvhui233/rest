@@ -1,0 +1,104 @@
+<h2>获得实际作用在元素身上的样式</h2>
+<p>
+	ie: var re = box.currentStyle.width ; <br>
+	w3c : var re = getComputedStyle(box,null).width ; <br>
+	兼容：var re = box.currentStyle.width || getComputedStyle(box.null).width ;
+</p>
+<h2>元素的位置和尺寸</h2>
+<p>
+	1、获得元素的left值，offsetLeft返回元素相对于父元素的坐标，若父元素没有定位属性，会返回相对于具有定位属性的前辈元素的坐标<br>
+	var re = box.offsetLeft; <br>
+	2、获得元素的实际尺寸 <br>
+	var re = box.offsetWidth; <br>
+	3、获得可见区域的宽度和高度 <br>
+	document.documentElement.clientWidth; <br>
+	document.documentElement.clientHeight; <br>
+</p>
+<h2>滚动条的位置</h2>
+<p>
+	获取滚动条的位置 <br>
+	var re = box.scrollTop; <br>
+	设置滚动条位置 <br>
+	box.scrollTop = 1000;
+</p>
+<h2>滚动条元素属性</h2>
+<p>
+	滚动元素位置 <br>
+	scrollTop <br>
+	scrollLeft <br>
+	滚动元素的宽度和高度 <br>
+	scrollWidth （文本宽度）<br>
+	scrollHeight （文本高度）<br>
+</p>
+<h2>dom模型，节点</h2>
+<p>
+	var list = document.getElementById('list'); <br>
+	获得所有的子节点的集合 <br>
+	var re = list.childNodes; <br>
+	找到父级节点的引用 <br>
+	var re = list.parentNode ; <br>
+	第一个子节点的引用 <br>
+	var re = list.firstChild ; <br>
+	最后一个子节点的引用<br>
+	var re = list.lastChild ; <br>
+	下一个兄弟节点的引用 <br>
+	var re = list.nextSibling ; <br>
+	上一个兄弟节点的引用  	<br>
+	var re = list.previousSibling ; <br>
+</p>
+<h2>节点操作</h2>
+<p>
+	创建节点 <br>
+	document.creatElement('元素标签名');
+	var hs = box.getElementsByTagName('h2');<br>
+	将new追加到box里 <br>
+	box.appendChild(new); <br>
+	将title插队到1号h2标签前面 <br>
+	box.insertBefore(title,hs[1]); <br>
+	删除节点 <br>
+	box.removeChild(hs[1]); <br>
+	替换节点 <br>
+	box.replaceChild(title,hs[1]); <br>
+	复制节点 <br>
+	参数true表示要完整复制,否则只复制本节点<br>
+	 var re = title.cloneNode(true);
+</p>
+<h2>事件对象</h2>
+<p>
+	用来记录一些事件发生时的相关的信息的对象<br>
+	1、只有当事件发生时才产生，只能在函数内部访问<br>
+	2、处理函数运行结束后自动销毁 <br>
+	<code>
+		document.getElementById("box").onclick = function(e){ <br>
+			获得兼容的事件对象<br>
+			var ev = window.event || e;<br>
+			获得鼠标当对于可视区域的距离<br>
+			alert(ev.clientX);<br>
+			获得鼠标和事件源之间的距离<br>
+			var re = ev.offsetX || ev.layerX;<br>
+			alert(re);<br>
+		}	
+	</code>
+</p>
+<h2>事件对象属性</h2>
+<h3>关于鼠标事件</h3>
+<p>
+	相对于浏览器的位置 <br>
+	clientX  当鼠标事件发生的时候，鼠标相对于浏览器左侧的距离 <br>
+	clientY  当鼠标事件发生的时候，鼠标相对于浏览器Y轴的位置<br>
+	相对于事件源的位置 <br>
+	IE: <br>
+	offsetX  offsetY <br>
+	FF: <br>
+	layerX layerY <br>
+	<strong>使用layerX和layerY时需要给事件源元素添加定位属性</strong> <br>	
+</p>
+<h3>关于键盘的事件</h3>
+<p>
+	keyCode 获得键盘码 <br>
+	altKey 判断alt键是否被按下，按下是true反之是false布尔值，用在keydown事件里 <br>
+	ctrlKey <br>
+	shiftKey <br>
+</p>
+
+

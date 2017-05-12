@@ -1,0 +1,65 @@
+<h2>事件流</h2>
+<p>
+	当页面元素触发事件的时候，该元素的容器以及整个页面都会按照特定顺序响应该元素的触发事件，事件传播的顺序叫做事件流程<br>
+	事件类型：冒泡型事件、捕获型事件（ie不支持）<br>
+</p>
+<h2>阻止事件流</h2>
+<p>
+	<code>
+		if (document.all) {
+			事件对象.cancelBubble=true;
+		}else{
+			事件对象.stopPropagation();
+		}
+	</code>
+</p>
+<h2>阻止浏览器的默认事件</h2>
+<p>
+	方法一：<br>
+	<code>
+		if (document.all) {
+			事件对象.returnValue = false;
+		}else{
+			事件对象.preventDefault();
+		}
+	</code> <br>
+	方法二：<br>
+	a标签：&lta href="javascript:void(0);"&gt&lt/a&gt &nbsp用a标签在多次点击时不会选中内容，而其他标签会，所以一些有点击事件的元素多用a标签去除浏览器默认事件的这种方法<br>
+	form标签：&ltform action="javascripy:void(0);"&gt&lt/form&gt <br>
+</p>
+<h2>日期对象</h2>
+<p>
+	 GMT(Greenwich Mean Time)是格林尼治时间 <br>
+	  UTC是协调世界时(Universal Time Coordinated)javascript DATE使用UTC(w)1970,1,1,0,0,0,0所经过的毫秒数，之前为负，之后为正。取值范围为 285616年。<br>
+</p>
+<h2>创建日期对象</h2>
+<p>
+	var time = new data(); <br>
+	将会包含本地时间的信息，包括年月日时分秒 星期 时区 <br>
+	var time = new data(2017,4,23,13,45,8); <br>
+	也可以自己定义，此写法是年，月，日，时，分，秒 <br>
+	js中得月份是0-11
+</p>
+<h2>获得日期信息的方法</h2>
+<p>
+	getFullYear()             获得日期对象中的年份 <br>
+	getMonth()               获得日期对象中的月份 (0 ~ 11) <br> 
+	getDate()                  获得日期对象中的日信息 (1 ~ 31)  <br> 
+	getHours()                获得日期对象中的小时 (0 ~ 23) <br>
+	getMinutes()             获得日期对象中的分钟 (0 ~ 59)  <br>
+	getSeconds()            获得日期对象中的秒数 (0 ~ 59) <br>
+	getDay()                    获得日期是周几 (0代表周天，1-6分别代表周1-6) <br> 
+	<strong>getTime()          获得日期对象中的日期与 1970 年 1 月 1 日相差的毫秒数</strong>
+</p>
+<h2>设置日期的方法</h2>
+<p>
+	setFullYear()        设置日期对象中的年份（四位数字） <br>
+	setMonth()          设置日期对象中月份 (0 ~ 11) <br>
+	setDate()             设置日期对象中月的某一天 (1 ~ 31) <br>
+	setHours()           设置日期对象中的小时 (0 ~ 23) <br>
+	setMinutes()        设置日期对象中的分钟 (0 ~ 59) <br>
+	setSeconds()       设置日期对象中的秒钟 (0 ~ 59)<br>
+	setTime()             以毫秒设置 Date 对象<br>
+</p>
+
+

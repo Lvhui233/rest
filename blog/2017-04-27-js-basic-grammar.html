@@ -1,0 +1,65 @@
+<h2>javascript的引用方法</h2>
+<p>嵌入式调用<br/>
+	<code>&ltscript type="text/javascript"&gt&lt/script&gt</code>
+</p>
+<p>
+	在超链接位置调用javascript代码<br/>
+	<code>"javascript:alert('我是超链接')"</code>
+</p>
+<p>
+	在重定向位置调用javascript代码<br/>
+	<code>action="javascript:alert('我是表单')"</code>
+</p>
+<p>在时间后面进行调用</p>
+<p>
+	调用外部js文件<br>
+	<code>&ltscript type="text/javascript" src=".../js"&gt&lt/script&gt</code>
+</p>
+<h2>输出工具</h2>
+<ul>
+	<li><code>alert();</code>直接以弹窗的形式显示文本</li>
+	<li><code>document.write()</code>输出到页面，会以html的语法解析里面的内容</li>
+	<li><code>prompt('提示文字','默认值')</code></li>
+</ul>
+<h2>放置时的注意事项</h2>
+<ul>
+	<li>js可以放在html页面的任何位置进行调用，但是它们依然是一个整体，是相互联系并且相互影响的</li>
+	<li>.在调用页面<code>&ltscript&gt&lt/script&gt</code>标签对当中不能有任何代码， 在js脚本中不能出现<code>&ltscript&gt&lt/script&gt</code>标签对,但是他们还是 一个整体，是相互联系，相互影响。
+	</li>
+</ul>
+<h2>注释<h2>
+<ul>
+	<li>行内注释：//注释内容</li>
+	<li>块注释：/*注释内容*/</li>
+</ul>
+<h2>js变量</h2>
+<p>声明变量的几种方法</p>
+<ul>
+	<li>先声明，后赋值<br>
+		<code>
+			var a;
+			a = 'hello';
+		</code>
+	</li>
+	<li>
+		声明和赋值同时进行<br>
+		<code>
+			var a = 'hello';
+		</code>
+	</li>
+	<li>
+		一次声明多个变量，然后赋值<br>
+		<code>
+			var name,age;
+			name = 'Jack';
+			age = 18 ;
+		</code>
+	</li>
+	<li>
+		一次声明多个变量，一起赋值<br>
+		<code>
+			var name = 'Mary',age = 16,sex = 'female';
+		</code>
+	</li>
+</ul>
+<h2></h2>

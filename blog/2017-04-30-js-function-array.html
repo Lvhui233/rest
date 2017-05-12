@@ -1,0 +1,84 @@
+<h2>函数</h2>
+<p>函数是一个工厂，是用来帮我们实现某一种功能的</p>
+<h3>用基本语法声明函数</h3>
+<p>
+	<code>
+		function hanshu(){
+
+		}
+	</code>
+</p>
+<h3>用字面量声明函数</h3>
+<p>
+	<code>
+		var hanshu = function() {
+
+		}
+	</code><br>
+	执行函数 <br>
+	hanshu();
+</p>
+<h2>带参数的函数</h2>
+<p>
+	自定义函数的书写步骤：<br>
+	1、确定你要实现什么功能 <br>
+	2、将函数声明出来 <br>
+	3、确定需要的参数 <br>
+	4、安排执行流程 <br>
+	例如：<br>
+	<code>
+		function plus(x,y) {
+		   var re = x+y;
+		   return re ; 
+		}
+	</code>
+</p>
+<h2>形参与实参</h2>
+<p>
+	如果实参数量多于形参，那么只用前几个实参 <br>
+	如果实参数量少于形参数量,那么未被赋值的形参将会变为undefined
+</p>
+<h2>变量作用域</h2>
+<p>
+	局部变量:在函数内部,用var声明的变量 <br>
+	全局变量:不是局部变量的变量就是全局变量
+</p>
+<h2>内置顶层函数</h2>
+<p>
+	将数据转成数字 <br>
+	<code>
+		var data ='123';
+		var re = Number(data);
+	</code> <br>
+	转成整数 <br>
+	<code>
+		var re = parseInt('123.5');
+		var re = parseInt('15px');
+	</code> <br>
+	浮点数转整数 <br>
+	<code>
+		var re = parseFloat('6.23');
+	</code> <br>
+	判断数据是否能转成数字 <br>
+	var re = isNaN('sa123'); <br>
+	<strong>当需要将字符串转为数字时，可以直接给字符串*1，也可以达到转换的目的</strong>
+</p>
+<h2>数组</h2>
+<p>
+	声明数组 <br>
+	数组起名的时候,不要用name这个单词起名字<br>
+	var shuiguo = ['西瓜','苹果','桃子','葡萄','樱桃'];<br>
+	var a=new Array(元素1,元素2,元素3..); <br> 
+	查看数组长度 <br>
+	alert(shuguo.length); <br>
+	改变数组内容 <br>
+	shuiguo.[1] = '火龙果';
+	向数组最后追加元素 <br>
+	shuiguo[shuiguo.length] = '芒果';<br>
+	数组的遍历 <br>
+	<code>
+		for (var i=0;i<shuiguo.length;i++) {
+
+		}
+	</code>
+</p>

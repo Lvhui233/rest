@@ -1,0 +1,188 @@
+<h2>无缝轮播条</h2>
+<p>
+	方法一<br>
+	在轮播条最后添加第一张图片，当轮播到最后张图片时（也就是放在最后的第一张图片时），当再次运动时，判断控制变量的值，然后瞬间改变定位值，让器位置换到第一张图片，接着改变控制变量的值，让其滑动到第二张图片，就可以达到无缝连接的视觉效果。
+</p>
+<p>
+	方法二 <br>
+	让第一个宽度渐渐变小，然后回调函数将第一个元素追加到最后，让最后一个元素宽度再变回来。 <br>
+	<code>
+		setInterval(function(){
+			让第一个li高度渐变成0
+		$("#news ul li").first().animate(
+			{'height':'0'},
+			300,
+			function(){
+			将第一个li追加到ul的最后
+			$("#news ul").append($("#news ul li").first());
+			让最后一个li高度变回40
+			$("#news ul li").last().height(40);
+		});
+	},1000)
+	</code> <br>
+</p>
+<h2>控制点击过快的问题</h2>
+<p>
+	用一个状态变量控制单击事件是否执行滑动，例如 <br>
+	<code>
+		$(function(){
+		var c=0;//大总管变量
+		var clock = 1;//状态变量
+//		给右侧按钮加单击事件
+		$("#right").click(function(){
+		if (clock==0) {
+			return;
+		}
+		
+		clock = 0;
+		clearInterval(timer);
+		setTimeout(function(){
+			timer = setInterval(run,1000);
+			clock = 1;
+		},400)
+		
+		c++;
+		if (c==5) {
+			$("#flash .pic_box").css({'left':'0'})
+			c = 1;
+		}
+//		计算大div的left值
+		var l = c * -473;
+//		让大div移动过来
+		$("#flash .pic_box").stop().animate({'left':l+'px'},300);
+//		让c号li变绿,其他的变灰
+		$("#flash ul li").eq(c).css({'background':'#7ABD54'}).siblings('li').css({'background':'#999'});
+		if (c==4) {
+			$("#flash ul li").eq(0).css({'background':'#7ABD54'}).siblings('li').css({'background':'#999'});
+		}
+	})
+	</code> <br>
+</p>
+<h2>控制滑动过快的问题</h2>
+<p>
+	鼠标的移入事件中加一个setTimeout定时器，并在定时器函数中写入运动时所需执行的代码，鼠标移出事件中清理这个定时器，这样在鼠标停留事件达不到定时器的执行时间时，定时器中的代码就不会执行，移除后清理了定时器也不会执行。如： <br>
+	<code>
+		$("#box").mouseenter(function(){
+			 timer = setTimeout(function(){
+		 	alert('你好');
+			 },200)	
+		})
+		$("#box").mouseleave(function(){
+			clearTimeout(timer);
+		})
+	</code>
+</p>
+<h2>this的指向问题</h2>
+<p>
+	1、谁调用this所在的函数this就指向谁 <br>
+	2、换句话说:this所在函数被调用的时候,点前面是哪个对象,this就指向谁 <br>
+	3、全局变量默认属于window里的属性 <br>
+	4、自定义的函数默认属于window的方法 <br>
+</p>
+<h2>没有定时器代码的复用</h2>
+<p>
+	通过关系去找对应的的元素进行变化
+</p>
+<h2>jQuery对属性的操作</h2>
+<p>
+	获得元素的属性值 <br>
+	var re = $('#title').attr('hd'); <br>
+	设置元素的属性值 <br>
+	$('#title').attr('class','qqqq'); <br>
+	删除元素属性 <br>
+	$('title').removeAttr('hd'); <br>
+</p>
+<h2>jQuery对class属性的操作</h2>
+<p>
+	添加class <br>
+	$('#titl').addClass('hd'); <br>
+	删除class值 <br>
+	$('title').removeClass('hd'); <br>
+</p>
+<h2>操作class的用法</h2>
+<p>
+	可以通过给元素添加和删除class控制元素的样式，如果是多个元素的话，可以达到代码的复用，减少代码量
+</p>
+<h2>操作元素内容</h2>
+<p>
+	获得元素内容 <br>
+	var re = $('#title').html(); <br>
+	设置元素内容 <br>
+	$('#title').html('内容') <br>
+	添加的内容可以直接写标签及属性，可以全部添加进去
+</p>
+<h2>checkbox全选，反选，全不选</h2>
+<p>
+	全选 <br>
+	<code>
+	$("#quanxuan").click(function(){
+		$("#list :checkbox").attr('checked','checked');
+		$("#list :checkbox").prop('checked',true);	
+	})
+	</code> <br>
+	全不选 <br>
+	<code>
+	$("#quanbuxuan").click(function(){
+		$("#list :checkbox").removeAttr('checked');
+		$("#list :checkbox").removeProp('checked');
+	})
+	</code> <br>
+	反选 <br>
+	<code>
+	$("#fanxuan").click(function(){
+//		选择目前处在选中状态下的元素
+		var objs = $("#list :checked");
+//		全选
+		$("#list :checkbox").attr('checked','checked');
+		$("#list :checkbox").prop('checked',true);
+//		让刚才处在选中状态下的元素取消选择
+		objs.removeAttr('checked');
+		objs.removeProp('checked');
+	})
+	</code> <br>
+</p>
+<h2>获得css样式</h2>
+<p>
+	var re $('#box').css('height'); <br>
+</p>
+<h2>元素位置</h2>
+<p>
+	获得元素距离页面顶部的实际位置 <br>
+	var re = $('#box').offset().top; <br>
+	获得定位元素的top值 <br>
+	var re = $('#box').position().top; <br>
+</p>
+<h2>让元素水平、垂直居中</h2>
+<p>
+	绝对定位，然后left和top值设为50%，再用外边距调整到居中。
+</p>
+<h2>jQuery操作尺寸</h2>
+<p>
+	获得内容宽度 <br>
+	var re = $('#box').width(); <br>
+	获得内容评和内边距的宽度 <br>
+	var re = $('#box').innerWidth() <br>
+	获得总宽度(内容宽度+内边距+边框) <br>
+	var re = $('#box').outerWidth <br>
+</p>
+<h2>节点操作</h2>
+<p>
+	追加新元素 <br>
+	$("#box").append('&lt h2 class="hd"&gt我是新来的！&lt/h2&gt'); <br>
+	$("#box").prepend('&lth2 class="hd"&gt我是新来的！&lt/h2&gt'); <br>
+	插队 <br>
+	将#title插队到2号h2标签后面 <br>
+	$("#box h2").eq(2).after($("#title")); <br>
+	包裹 <br>
+	$("#box h2").wrap('&ltu class="hahha"&gt&lt/u&gt') <br>
+	$("#box h2").wrapAll('&ltu class="hahha"&gt&lt/u&gt') <br>
+	替换 <br>
+	$("#box h2").eq(1).replaceWith($("#title")); <br>
+	清空元素 <br>
+	$("#box").empty(); <br>
+	删除元素 <br>
+	$("#box").remove(); <br>
+	复制元素 <br>
+	var obj = $("#title").clone(); <br>
+	$("#box").append(obj); <br>
+</p>

@@ -1,0 +1,75 @@
+<h2>用on和off给元素添加和删除事件</h2>
+<p>
+	<pre>
+	用on给元素绑定事件 <br>
+	$('#box').on('click mouseenter',function(){ <br>
+		alert('add success'); <br>
+	}) <br>
+	取消事件 <br>
+	$('#box').off('mouseenter');
+	</pre>
+</p>
+<h2>给未来元素绑定事件</h2>
+<h3>方法一</h3>
+<p>
+将事件加在其父级元素上，然后将事件托管到元素上
+<pre>
+	$("#btn").click(function(){ 
+		在box中追加新元素 
+		$("#box").append('&lth2&gtnew one&lt/h2&gt'); 
+	})
+	给box中的h2添加单击事件,box是h2的父元素
+	$("#box").on('click','h2',function(){
+		alert('触发成功！');
+	})
+</pre>
+</p>
+<h3>方法二</h3>
+<p>
+将单击事件写在元素标签当中，事件触发时执行指定函数，如 &lth2 onclick="fool()"&gt new one&lt/h2&gt
+</p>
+<h2>添加只执行一次的事件</h2>
+<p>
+<pre>
+	给box添加只执行一次的单击事件 
+	$('#box').one('click',function(){
+		alert('say goodbye');
+	})
+</pre>
+</p>
+<h2>.trigger方法</h2>
+<p>
+<pre>
+	$('#btn').click(function(){
+		val用来获得元素的value值
+		if($('#uname').val().length>10){
+			trigger用来触发表单提交事件
+			$('form').trigger('submit');
+		}else{
+			alert('too short')；
+		}
+	})
+</pre>
+</p>
+<h2>hover方法</h2>
+<p>
+	控制鼠标移入与移出，移入执行第一个函数，移出执行第二个函数
+<pre>
+	$('#box').hover(function(){
+		移入时执行函数
+		$(this).css({'background':'blue'});
+	},function(){
+		移出时执行函数
+		$(this).css({'background':'red'});
+	})
+</pre>
+</p>
+<h2>jQuery事件对象</h2>
+<p>
+<pre>
+	$('#box').click(function(e){
+		.pageX为鼠标点击时相对与页面的left值
+		alert(e.pageX);
+	})
+</pre>
+</p>

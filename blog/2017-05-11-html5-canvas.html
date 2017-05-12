@@ -1,0 +1,177 @@
+<h2>canvas画布</h2>
+<p>
+<pre>
+	canvas不能用css设置宽高 
+	&ltcanvas width="700" height="400" id="canvas"&gt&lt/canvas&gt
+	&ltscript type="text/javascript"&gt
+//		获得画板元素
+		var canvas = document.getElementById("canvas");
+//		获得绘画环境(相当于铺了一张画布)
+		var ca = canvas.getContext('2d');
+//		设置填充颜色
+		ca.fillStyle = 'yellow';
+//		画一个矩形
+//		参数分别是:左顶点的x轴左边/左顶点的Y轴坐标/宽度/高度
+		ca.fillRect(100,66,200,150);
+
+//		设置线条颜色
+		ca.strokeStyle = 'deepskyblue';
+//		设置线条粗细
+		ca.lineWidth = '10px';
+//		画一个空心的矩形
+		ca.strokeRect(350,88,200,150);
+//		擦除
+		ca.clearRect(0,0,200,200);
+	&lt/script&gt
+</pre>
+</p>
+<h3>路径</h3>
+<p>
+<pre>
+	//获得绘画环境
+	var cv = document.getElementById("canvas").getContext('2d');
+	//开启路径(相当于拿起画笔,大喊一声,老子要画画啦!)
+	cv.beginPath();
+	//将笔触移动到起点
+	cv.moveTo(50,50);
+	//将线条连接到400,300的电上
+	cv.lineTo(400,300);
+	//线条粗细
+	cv.lineWidth = 6;
+	//拐角
+	cv.lineJoin = 'round';
+	//线条颜色
+	cv.strokeStyle = 'yellow';
+	//将刚才定义好的路径画出来
+	cv.stroke();
+	cv.lineTo(700,50);
+	cv.stroke();
+</pre>
+</p>
+<h3>画板效果</h3>
+<p>
+	
+</p>
+<h3>绘制多边形</h3>
+<p>
+	设置鼠标按下事件，获取鼠标当前位置，将路径连到鼠标位置，然后画线，鼠标弹起时结束路径 cv.closePath 并移除按下事件 <br>
+	设置颜色 <br>
+<pre>
+	color.onchange = function(){ 
+//	alert(this.value); 
+//	将最新的颜色值设置给cv 
+	cv.strokeStyle = this.value; 
+	} 
+</pre>
+	设置宽度  <br>
+<pre>
+	range.onchange = function(){ 
+	cv.lineWidth = this.value; 
+	} 
+</pre>
+</p>
+<h3>绘制多变形</h3>
+<p>
+<pre>
+	//获得绘画环境
+	var cv = document.getElementById("canvas").getContext('2d');
+	//开启路径
+	cv.beginPath();
+	//定义起点
+	cv.moveTo(200,400);
+	cv.lineTo(500,400);
+	cv.lineTo(350,50);
+	cv.closePath();
+	//定义填充颜色
+	cv.fillStyle = 'greenyellow';
+	//填充
+	//在填充的时候,会自动闭合路径
+	cv.fill();
+</pre>
+</p>
+<h3>画布控制</h3>
+<p>
+	控制的不是画布，是画在画布上的图形 <br>
+<pre>
+	//获得绘画环境
+	var cv = document.getElementById("canvas").getContext('2d');
+	//缩放画布
+	//cv.scale(1.5,0.8);
+	//图像水平位移
+	//cv.translate(50,50);
+	//画布旋转
+	//单位是弧度,一角度等于180分之一π
+	cv.rotate(30*(Math.PI/180));
+	cv.fillStyle = 'yellow';
+	cv.fillRect(100,100,200,200);
+</pre>
+</p>
+<h3>画圆弧</h3>
+<p>
+	 context.arc(x,y,r,sAngle,eAngle,counterclockwise)  <br>
+	 x 圆的中心的 x 坐标。<br>
+	 y 圆的中心的 y 坐标。 <br>
+	 r 圆的半径。 <br>
+	 sAngle 起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。<br>
+	 eAngle 结束角，以弧度计。 <br>
+	 counterclockwise 可选。False = 顺时针，true = 逆时针。<br>
+</p>
+<h3>在画布中画文字</h3>
+<p>
+	设置文字属性 <br>
+	cv.font = '40px 微软雅黑'; <br>
+	在画布中写入文字 <br>
+	cv.fillText('hhhhhh',100,100); <br>
+	设置水平位置 <br>
+	cv.textAlign = 'center'; <br>
+	设置垂直对齐 <br>
+	cv.textBaseline = 'middle'; <br>
+	水平对其与垂直对其是相对于参考线而言的 <br>
+</p>
+<h3>画布中写入图像</h3>
+<p>
+	当图片加载完毕后，再将图片引入画布 <br>
+	<br>
+	img.onload(function(){ <br>
+		context.drawImage(img,画布x坐标,画面y坐标);  <br>
+	}) <br>
+	在画布上定位图像，并规定图像的宽度和高度 <br>
+	context.drawImage(img,画布x坐标,画面y坐标,图片width,图片height); <br>
+	剪切图像，并在画布上定位被剪切的部分 <br>
+	context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);  <br>
+	参数：<br>
+	img 规定要使用的图像、画布或视频。<br>
+	sx 可选。开始剪切的 <br>
+	x 坐标位置。 <br>
+	sy 可选。开始剪切的 <br>
+	y 坐标位置。 <br>
+	swidth可选。被剪切图像的宽度。 <br>
+	sheight可选。被剪切图像的高度。<br> 
+	x 可选。在画布上放置图像的 x 坐标位置。 <br>
+	y 可选。在画布上放置图像的 y 坐标位置。 <br>
+	width 可选。要使用的图像的宽度。（伸展或缩小图像） <br>height可选。要使用的图像的高度。（伸展或缩小图像） <br>
+</p>
+<h2>图像平铺</h2>
+<p>
+	在水平和垂直方向重复图像 <br>
+	context.createPattern(image,"repeat|repeat-x|repeat-y|no-repeat") 
+</p>
+<h2>图片数据</h2>
+<p>
+	 获取图像的图像数据 <br>
+	 context.getImageData(x,y,width,height) <br>
+	 返回的Image对象的data 属性返回一个对象，该对象包含指定的 ImageData 对象的 图像数据  <br>
+	 对于 ImageData 对象中的每个像素，都存在着四方面的信息，即 RGBA 值： <br>
+	 R - 红色 (0-255) <br>
+	 G - 绿色 (0-255) <br>
+	 B - 蓝色 (0-255) <br>
+	 A - alpha 通道 (0-255; 0 是透明的，255 是完全可见的) <br>
+	 把图像数据（从指定的 ImageData 对象）放回画布 <br>
+	 context.putImageData(imgData,x,y,dirtyX,dirtyY,dirtyWidth,dirtyHeight); <br>
+	 参数说明：<br>
+	 imgData 规定要放回画布的 ImageData 对象。 <br>
+	 x 在画布上放置图像的位置。 <br>
+	 y 在画布上放置图像的位置。<br>
+</p>
+
+

@@ -1,0 +1,20 @@
+<h2>ajax传输数据</h2>
+<p>
+<pre>
+	$.ajax({
+		url:"list.php",//数据发送地址
+		type: 'post',//数据传输方式
+		data:{lanmu:1},//需要传送的数据
+		dataType:'json',//返回的数据格式
+		success:function(data){
+//			遍历数组
+			$.each(data,function(k,v){
+//				将获得的对象中的信息重组成新内容
+				var str = '&ltli&gt&ltimg src="'+v.imgUrl+'"/&gt&lth2&gt'+v.title+'&lt/h2&gt&ltp&gt'+v.desc+'&lt/p&gt&lt/li&gt';
+				$("#news").append(str);
+			})
+		}
+	})
+	函数中的两个参数，k代表对象在数组中序号，v代表相应的对象
+</pre>
+</p>

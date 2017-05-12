@@ -1,0 +1,77 @@
+<h2>html5中的表单新增项</h2>
+<p>
+	邮箱 ：&ltinput type="email" name="" id=""&gt <br>
+	网址 ：&ltinput type="url" name="" id=""&gt <br>
+	数字 ：&ltinput type="number"min="3" max='10' value="5" step="2"&gt <br>
+	滑块 ： &ltinput type="range" name="range" min="1" max="11" step="2"&gt <br>
+	日期 : &ltinput type="date" /&gt <br>
+	颜色 : &ltinput type="color" /&gt <br>
+	datalist : 定义选项列表，用于输入自动匹配 <br>
+<pre>
+	&ltinput type="text" list="books" /&gt
+		&ltdatalist id="books"&gt
+			&ltoption&gt人民的名义&lt/option&gt
+			&ltoption&gt孙老师讲前端&lt/option&gt
+			&ltoption&gt那个女孩真美&lt/option&gt
+			&ltoption&gt那条小狗真可爱&lt/option&gt
+			&ltoption&gt大家真好&lt/option&gt
+		&lt/datalist&gt
+</pre>
+</p>
+<p>
+	autofocus属性：自动获得焦点 <br>
+	&ltinput type="name" autofocus="on"&gt <br>
+	form属性：提交formh标签以外的表单 <br>
+<pre>
+	&ltform id="form" action="1.php" method="post”&gt
+		&ltinput type="text" name="city"&gt
+		&ltinput type="submit"&gt 
+	&lt/form&gt
+	&ltinput type="number" name="age" form="form"/&gt
+</pre>
+	multiple属性： 设置multiple后可以设置多个文件 <br>
+	&ltinput type="file" multiple="multiple" /&gt <br>
+	placeholder属性：设置文本框信息 <br>
+	&ltinput type="text" name="title" placeholder="请输入标题"&gt <br>
+	required属性：表示内容不能为空 <br>
+	&ltinput type="text" name="title" required title="标题不能为空"&gt <br>
+</p>
+<h2>音频播放</h2>
+<p>
+	audio标签插入音频，controls属性显示控件，autoplay属性自动播放，loop属性循环播放 <br>
+	&ltaudio src="YesterdayOnceMore.mp3" controls="controls" autoplay="autoplay" loop="loop"&gt&lt/audio&gt
+</p>
+<h2>视频播放</h2>
+<p>
+	视频格式支持：mp4(H.264编码)、webm、ogg <br>
+<pre>
+	&ltvideo src="big_buck_bunny.mp4" poster="dog.jpg" controls="controls" id="v"&gt&lt/video&gt
+</pre>
+	<a href="http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp">音视频手册</a>
+</p>
+<h3>视频的控制</h3>
+	<p>
+		方法只能用于原生js抓取的对象 <br>
+		var v= document.getElementById('video'); <br>
+		开始播放 <br>
+		v.play(); <br>
+		暂停播放 <br>
+		v.pause(); <br>
+		快进几秒，快退几秒 <br>
+		获得当前位置 <br>
+		var cur = v.currentTime;
+		计算新位置 <br>
+		var new_time = cur+3; <br>
+		将新位置设置回去 <br>
+		v.currentTime = new_time; <br>
+		加速播放，减速播放（倍率） <br>
+		v.playbackRate = 1.5; <br>
+	</p>
+<h2><a href="http://www.jq22.com/jquery-info404">video.js插件的使用</a></h2>
+<h2>jQuery对象和原生对象的相互转换</h2>
+<p>
+	将jquery形式的对象转成原生形式对象 <br>
+	$('#video')[0] <br>
+	将原生对象转成jQuer形式对象 <br>
+	$(getElementById('video)) <br>
+</p>

@@ -1,0 +1,110 @@
+<h2>数组排序</h2>
+<p>
+	用来排序的函数
+	<code>
+		function sortNum(x,y) {
+			return x-y;
+		}
+		var re = shuzu.sort(sortNum);
+		alert(re);
+	</code>
+</p>
+<h2>字符串对象</h2>
+<p>
+	var str = 'abcdefghigk'; <br>
+	获得6号位置上的字符 <br>
+	var re = str.charAt(6); <br>
+	获得6号位置上字符的Unicode编码 <br>
+	var re = str.charCodeAt(6); <br>
+	将Unicode编码转换成原始字符 <br>
+	var re = String.fromCharCode(100); <br>
+	获得f在字符串中第一次出现的位置 <br>
+	var re = str.indexOf('f'); <br>
+	获得f在字符串中最后一次出现的位置 <br>
+	var re = str.lastIndexOf('f'); <br>
+	查询字符串中有没有gh字符 <br>
+	var re = str.match('gh'); <br>
+	如果有会返回字符串gh
+</p>
+<h2>replace替换</h2>
+<p>
+	replace默认只替换第一个符合条件的内容 <br>
+	var re = str.replace('abc','*****'); <br>
+	逐一查找并替换： <br>
+	<code>
+		while(str.match('abc')){
+			str = str.replace('abc','*******');
+		}
+	</code> <br>
+</p>
+<h2>字符串slice截取</h2>
+<p>
+	和数组的截取用法相同
+</p>
+<h2>字符串substr截取</h2>
+<p>
+	str.substr(start,length); <br>
+	从指定的位置开始取指定长度的字符串。如果没有指定长度，从指 定开始的位置取到结尾。 <br>
+</p>
+<h2>将字符串分割成数组</h2>
+<p>
+	var str = '西瓜-橙子-芒果-菠萝'; <br>
+	var arr = str.split('-');
+</p>
+<h2>大小写转换</h2>
+<p>
+	转换成大写 <br>
+	var re = str.toUpperCase; <br>
+	转换成小写 <br>
+	var re = str.toLowerCase; 
+</p>
+<h2>定时器</h2>
+<p>
+	<code>
+		function foo() {
+			alert('hello');
+		}
+	</code>
+	每隔两秒执行一次foo函数 <br>
+	setInterval(foo,2000); <br>
+	两秒后执行foo函数，只执行一次 <br>
+	setTimeout(foo,2000); <br>
+</p>
+<h2>清理定时器</h2>
+<p>
+	clearInterval(定时器名); <br>
+	clearTimeout(定时器名);
+</p>
+<h2>事件</h2>
+<p>
+	要操作body里元素的时候就要写window.onload <br>
+	<code>
+		window.onload = function() {
+
+		}
+	</code>
+</p>
+<h2>获得和设置元素行内样式</h2>
+<p>
+	var re = document.getElementById('box').style.width; <br>
+	document.getElementById('box').style.width = '150px';
+</p>
+<h2>数据的几种调试输出方法</h2>
+<p>
+	var re = 9 ;
+	将数据输出到把标题栏中 <br>
+	document.title = re ; <br>
+	将每次的值都输出到控制台 <br>
+	console.log(re);
+</p>
+<h2>confirm</h2>
+<p>
+	<code>
+		var re = confirm('你确定要删除吗？');
+		if (re) {
+			alert('删除成功');
+		}else{
+			alert('没有删除');
+		}
+	</code>
+</p>
