@@ -1,0 +1,29 @@
+<h2>响应式页面</h2>
+<p>
+	在不用改变布局的情况下，根据屏幕的大小改变所应用的css样式 <br>
+	 max-width 当页面小于xx时被支持 <br>
+	 min-width 当页面大于xx时被支持 <br>
+</p>
+<h3>头部样式写法</h3>
+<p>
+<pre>
+	&ltstyle type="text/css"&gt
+		@media only screen and (max-width:650px) {
+			background:green;
+		}
+	&lt/style&gt
+</pre>
+</p>
+<h3>外部样式写法</h3>
+<p>
+<pre>
+	&ltlink rel="stylesheet" href="kuan.css" media="screen and (min-width: 1201px)"&gt
+	&ltlink rel="stylesheet" href="zhai.css" media="screen and (max-width: 1200px)"&gt
+</pre>
+</p>
+<h3>多个media queries使用</h3>
+<p>
+<pre>
+	 &ltlink rel="stylesheet" media="screen and (min-width:600px) and (maxwidth:900px)" href="style.css" type="text/css" /&gt
+</pre>
+</p>
