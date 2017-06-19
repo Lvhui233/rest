@@ -11,6 +11,44 @@ tags:
     - PHP
 ---
 
+
+## 类
+
+### 创建类
+
+```
+//类名首字母一般大写
+class Man{
+	$action='run';
+}
+//用类实例化对象
+$male=new Man;
+
+### 类的继承
+
+```
+//父类
+class Father{
+	public $name;
+	public $age;
+	public $sex;
+	public function say(){
+		echo 'can speak';
+	}
+}
+//子类
+class Son extends Father(){
+	public function say(){
+		echo 'can speak,too';
+	}
+}
+
+### 声明属性和方法
+
+- `public` 可在内部外部和子类调用
+- `protected` 可在内部和子类调用
+- `private` 只能在内部调用，无法被子类继承
+
 ## 构造方法与析构方法
 
 ### 构造方法
