@@ -250,3 +250,99 @@ select * from student order by rand() limit 3;
 //随机抽4条年龄大于20岁的数据
 select * from student where age>20 order by rand() limit 4;
 ```
+
+### 查询age在20到23之间的数据
+
+```
+select * from stu where age between 20 and 23;
+```
+
+### 查询age是23或31的数据
+
+```
+select * from stu where age in(23,31);
+```
+
+### 查询stu表中name字段中含有guo的数据
+
+```
+select * from stu where name like '%guo%';
+```
+
+### 查询stu表中name字段中以guo开头的数据
+
+```
+select * from stu where name like 'guo%';
+```
+
+### 查询stu表中name字段以cheng结尾的数据
+
+```
+select * from stu where name like '%cheng';
+```
+
+### 查询stu表中name字段是li?的数据
+
+下划线代表任意的一个非空字符
+
+```
+select * from stu where name like 'li_';
+```
+
+### 查询stu表中sid和name字段，截取name字段的前2个字符
+
+```
+select sid,left(name,2) fro, stu;
+```
+
+### 替换数据
+
+```
+//若不设置主键,追加到最后
+replace into stu (name,age) value ('liming',25);
+//设置主键,将替换数据
+replace into stu (sid,name,age) value (18,'liming',25);
+```
+
+### 删除age小于18的数据
+
+```
+delete from stu where age<18;
+```
+
+### 获得stu表中有多少条数据
+
+```
+select count(*) from stu;
+```
+
+### 查看最大最小age
+
+```
+select max(age) from stu;
+select min(age) from stu;
+```
+
+### 计算age字段总和
+
+```
+select sum(age) from stu;
+```
+
+### 计算age字段的平均数
+
+```
+select avg(age) from stu;
+```
+
+### 依据sex字段分组
+
+```
+select * from stu group by sex;
+```
+
+### 分组后筛选
+
+```
+select * from stu group by sex having sex='male';
+```
