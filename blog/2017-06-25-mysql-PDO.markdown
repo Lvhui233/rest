@@ -85,13 +85,28 @@ try {
 	//PDO::FETCH_ASSOC 获得关联数组
 //	获得比较干净的关联数组
 	$data = $result->fetchAll(PDO::FETCH_ASSOC);
-
+//获得单条数据
+//	$data = $result->fetch(PDO::FETCH_ASSOS);
 	print_r($data);
 
 } catch (PDOException $e) {//捕获错误之后，由开发人员自由处理
 	echo "<span style='color:red'>" . $e -> getMessage() . "</span>";
 }
 ?>
+```
+
+#### 获得返回值
+
+```
+//获得全部数据
+$data = $result->fetchAll(PDO::FETCH_ASSOC);
+//获得单条数据
+$data = $result->fetch(PDO::FETCH_ASSOS);
+//while循环获得全部数据
+$data=array();
+while($result->fetch(PDO::FETCH_ASSOS)){
+	$data[]= $result->fetch(PDO::FETCH_ASSOS);
+}
 ```
 
 ### 无结果集操作
@@ -125,7 +140,7 @@ try {
 
 ### 预处理
 
-预准备语句句是SQL语句编译后形成的模板,也就是说语句句只解析一次,
+预准备语句是SQL语句编译后形成的模板,也就是说语句只解析一次,
 以后只要传替不同的参数就可以了
 
 ```
