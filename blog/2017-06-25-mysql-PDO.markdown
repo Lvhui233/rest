@@ -22,7 +22,7 @@ PDO扩展为PHP访问数据库定义了一个轻量级的、一致性的接口�
 
 ### linux下开启
 
-- 如果你正在使⽤用PHP5.1版本，PDO和PDO SQLITE已经包含在了此 发行版中 
+- 如果你正在使用PHP5.1版本，PDO和PDO SQLITE已经包含在了此 发行版中 
 - yum –y install php-pdo
 
 ### window下开启
