@@ -1,0 +1,115 @@
+---
+layout:     post
+title:      " "
+subtitle:   ""
+date:       2017-06-27 12:00:00
+author:     "LvI"
+header-img: "img/post-bg-re-vs-ng2.jpg"
+header-mask: 0.3
+catalog: true
+tags:
+    - laravel
+---
+
+
+## 用hdjs上传图片
+0.安装php_fileinfo拓展，并在配置文件中开启
+1.模板头部引入js
+2.在模板中引入上图片所需的`<script>`标签
+3.创建上传文件控制器
+
+```
+public function uploader(Request $request) {
+        $file = $request->file;
+        if($file->isValid()){
+            $path = $file->store(date('ymd'),'fileupload');
+            return ['valid'=>1,'message'=>asset('fileupload/' . $path)];
+
+        }
+        return ['valid'=>0,'message'=>'图片上传失败'];
+
+    }
+
+    public function filesLists() {
+        return [ 'data' => [], 'page' => ''];
+    }
+```
+4.位控制器方法配置路由
+
+```
+Route::any('/component/uploader','component\UploadController@uploader');
+Route::any('/component/filesLists','component\UploadController@filesLists');
+```
+5.在config文件夹下的filesystems文件中
+在disks数组中加入
+
+```
+'fileupload'=>[
+            'driver'=>'local',
+            'root' => 'fileupload',
+        ],
+```
+
+## 模型关联
+
+- 用查询构造器查询过的数据需要转换类型
+需要先转成json再转回来分配到模型中，否则会报错
+
+- 模型关联后在在模型中以对象形式调用关联数据
+
+```
+//反向一对多关联
+public function fenlei()
+    {
+        return $this->belongsTo(Classify::class,'classify_id','id');
+    }
+//模型中拿classify中数据
+ @foreach($data as $v)
+            <tr>
+                <td>{{$v['id']}}</td>
+                <td>{{$v['bname']}}</td>
+                <td>{{$v->fenlei->cname}}</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="/admin/brand/{{$v['id']}}/edit" type="button" class="btn btn-default">编辑</a>
+                        <a href="javascript:;" onclick="del({{$v['id']}})" type="button" class="btn btn-default">删除</a>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+```
+
+## Auth进行用户验证
+
+1.创建模型及数据表,模型继承User类以继承验证方法
+2.模型中加入`protected $rememberTokenName='';`防止remembertoken报错
+3.congfig文件夹中在auth配置文件,在guards数组中追加
+
+```
+'accesslogin'=>[
+            'driver' => 'session',
+            'provider'=> 'adminer'
+        ],
+```
+
+4.添加手动认证
+
+```
+//用attempt方法进行认证返回布尔值
+$state=Auth::guard('accesslogin')->attempt([
+            'name'=>Request::input('username'),
+            'password'=>Request::input('password')
+        ]);
+        if ($state){
+            return redirect('/admin/index');
+        }else{
+            return redirect('/admin/login')->with('error','用户名或密码错误');
+        }
+```
+5.退出登录用`Auth::guard('accesslogin')->logout;`
+
+
+## request进行表单验证
+1.
+
+## 中间件验证是否登录
