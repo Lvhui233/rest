@@ -1,19 +1,18 @@
 ---
 layout:     post
-title:      "JS javascript概述"
-subtitle:   "JS javascript summary"
-date:       2017-04-26 12:00:00
+title:      "javascript概述"
+subtitle:   "javascript summary"
+date:       2014-04-26 12:00:00
 author:     "LvI"
 header-img: "img/post-bg-os-metro.jpg"
 header-mask: 0.3
 catalog: true
 tags:
-    - javascript
+    - JS
 ---
 
 
 ## javascript功能
-
 
 - 数据的验证
 - 将动态内容写道网页当中（ajax）
