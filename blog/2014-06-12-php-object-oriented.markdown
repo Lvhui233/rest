@@ -23,6 +23,7 @@ class Man{
 }
 //用类实例化对象
 $male=new Man;
+```
 
 ### 类的继承
 
@@ -42,6 +43,7 @@ class Son extends Father(){
 		echo 'can speak,too';
 	}
 }
+```
 
 ### 声明属性和方法
 
@@ -270,7 +272,7 @@ $obj->foo();
 
 ```
 abstract class Animal{
-	abstrsct public function color($var);
+	abstract public function color($var);
 }
 class Fish extends Animal{
 	public function color($var){

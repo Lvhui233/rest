@@ -78,8 +78,8 @@ null数据类型只有一个值null，以下几种情况会被认为是null
 - `is_bool` 是否为布尔值
 - `is_int`  是否为整形
 - `is_float` 是否为浮点数
-- `is_strd` 是否为字符串
-- `is_null` 是否为bull
+- `is_str` 是否为字符串
+- `is_null` 是否为null
 
 #### 数据类型转换
 
